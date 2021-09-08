@@ -1,0 +1,39 @@
+d:Ge/World/HLX       = 2.0 m
+d:Ge/World/HLY       = 2.0 m
+d:Ge/World/HLZ       = 1.3 m
+b:Ge/World/Invisible = "True"
+
+#Beam source
+s:So/Example/Type                     = "Beam"
+s:So/Example/Component                = "BeamPosition"
+s:So/Example/BeamParticle             = "proton"
+d:So/Example/BeamEnergy	       = 90 MeV
+u:So/Example/BeamEnergySpread         = 10
+s:So/Example/BeamPositionDistribution = "None"
+s:So/Example/BeamPositionCutoffShape  = "Ellipse"
+s:So/Example/BeamAngularDistribution  = "None"
+
+
+i:So/Example/NumberOfHistoriesInRun   =  10000
+i:Ts/ShowHistoryCountAtInterval = 1000
+i:Ts/NumberOfThreads = 16
+b:Ts/ShowCPUTime = "True"
+
+#Scorer
+s:Ge/Phantom/Type = "TsBox"
+s:Ge/Phantom/Parent = "World"
+s:Ge/Phantom/Material = "G4_WATER"
+d:Ge/Phantom/HLX = 10 cm
+d:Ge/Phantom/HLY = 10 cm
+d:Ge/Phantom/HLZ = 5 cm
+i:Ge/Phantom/ZBins = 100
+d:Ge/Phantom/TransZ = -5 cm
+
+s:Sc/DoseAtPhantom/Quantity                  = "DoseToMedium"
+s:Sc/DoseAtPhantom/Component 		       = "Phantom"
+s:Sc/DoseAtPhantom/OutputFile           = "dose"
+s:Sc/DoseAtPhantom/IfOutputFileAlreadyExists = "Overwrite"
+
+sv:Ph/Default/Modules = 5 "g4em-standard_opt4" "g4h-elastic_HP"  "g4decay"  "g4stopping" "g4ion-binarycascade"
+#"g4h-phy_QGSP_BIC_HP" 
+#b:Ts/PauseBeforeQuit = "True"
